@@ -1,0 +1,49 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Some Example API
+  description: Dunno
+basePath: /base
+
+securityDefinitions:
+  Bearer:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: https://openid-walkthrough-session.eu.auth0.com/authorize?audience=some-example-api
+    tokenUrl: https://openid-walkthrough-session.eu.auth0.com/oauth/token
+    scopes:
+      openid: openid
+      profile: your basic user information
+      phone: your phone number
+      #offline_access: Get a refresh token
+
+produces:
+  - application/json
+paths:
+  /tokens/id_token:
+    get:
+      operationId: DumpIdToken
+      description: |
+        Dump the id token as json
+      security:
+        - Bearer: []
+      tags:
+        - users
+      responses:
+        200:
+          description: |
+            yay
+
+  /tokens/access_token:
+    get:
+      operationId: DumpAccessToken
+      description: |
+        Dump the access token as json
+      security:
+        - Bearer: []
+      tags:
+        - users
+      responses:
+        200:
+          description: |
+            yay
